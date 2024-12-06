@@ -1,0 +1,61 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Simple PureCss dropdown menu with following subnav</title>
+  <link rel="stylesheet" href="{% static 'nav/css/style.css' %}"> 
+  
+  <style>
+  .mainlogin {
+    position:fixed;
+    top: 50%;
+    left: 70%;
+    width:34em;
+    height:20em;
+    margin-top: -10em; /*set to a negative number 1/2 of your height*/
+    margin-left: -15em; /*set to a negative number 1/2 of your width*/
+    border: 1px solid #ccc;
+    background-color: #f3f3f3;
+}
+.borbotm{
+position: fixed;
+width:100%;
+bottom:10%;
+background:rgba(107, 190, 146, 0.5);
+padding:10px;
+text-transform:uppercase;
+border-top:2px solid rgb(255,255,255);
+border-bottom:2px solid rgb(255,255,255);
+right:0%;
+}
+@font-face {
+    font-family: myFirstFont;
+    src: url({% static 'fonts/corsiva.ttf' %});
+}
+@font-face {
+    font-family: myFont;
+    src: url({% static 'fonts/apple.ttf' %});
+}
+h1{
+position:fixed;
+top:8%;
+font-size:55px;
+font-family: myFirstFont;
+}
+
+  </style>
+  
+</head>
+
+<body>
+
+<h1>Review of the Use of AI Techniques in Serious Games: Decision-Making and Machine Learning</h1>
+<img src="{% static 'images/loginani.gif' %}" style="width:550px;margin-right:650px;margin-top:250px;">
+<div class="mainlogin">
+        {% block loginblock %}  
+        {% endblock %}    
+</div>
+<div class="borbotm"><marquee dir="scroll">Review of the Use of AI Techniques in Serious Games: Decision-Making and Machine Learning</marquee></div>
+</body>
+</html>

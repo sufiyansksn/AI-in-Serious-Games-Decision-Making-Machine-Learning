@@ -1,0 +1,53 @@
+{% extends 'authority\base.html' %}
+{% block mainblock %}
+{% load staticfiles %}
+<style>
+table.hometbl{
+    border-collapse:separate;
+    border-spacing: 1px;
+}
+table.hometbl tr th{
+background:black;
+padding:8px;
+}
+table.hometbl tr td{
+background:white;
+padding:10px;
+color:black;
+}
+</style>
+<link rel="stylesheet" href="{% static 'css/mystyle.css' %}">
+<div class="maincontent">
+<table class="hometbl">
+<tr>
+<th>Resource Type</th>
+<th>Resource Title</th>
+<th>Author</th>
+<th>Algorithm Used</th>
+<th>Technique Used</th>
+<th>Technique Description</th>
+<th>Request Status</th>
+<th colspan="2">Update Status</th>
+</tr>
+{% for d in det %}
+<tr>
+<td>{{d.resourceType}}</td>
+<td>{{d.resourceTitle}}</td>
+<td>{{d.author}}</td>
+<td>{{d.algorithmUsed}}</td>
+<td>{{d.techniqueUsed}}</td>
+<td>{{d.techniqueDescription}}</td>
+<td>{{d.requestStatus}}</td>
+{% if d.requestStatus == 'pending' %}
+<td><a href="{% url 'authority:updatestatus' 'accept' d.id %}">accept</td>
+<td><a href="{% url 'authority:updatestatus' 'reject' d.id %}">reject</td>
+{% elif d.requestStatus == 'accepted' or  d.requestStatus == 'rejected' %}
+<td><a href="{% url 'authority:updatestatus' 'cancel' d.id %}">cancel</td>
+<td><a href="{% url 'authority:updatestatus' 'delete' d.id %}">delete</td>
+{% endif %}
+{% endfor %}
+</tr>
+</table>
+</div>
+
+{% endblock %}

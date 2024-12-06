@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block mainblock %}
+{% load staticfiles %}
+<style>
+table{
+position:fixed;
+left:26%;
+border-spacing:1px;
+}
+table tr th{
+background:black;
+padding:20px;
+}
+table tr td{
+background:white;
+padding:20px;
+color:black;
+}
+</style>
+<table>
+<tr>
+<th>User Name</th>
+<th>Algorithm Name</th>
+<th>Ratings</th>
+<th>Reviews</th>
+<tr>
+<td>{{rating.user.username}}</td>
+<td>{{rating.algs.resourceTitle}}&nbsp;&nbsp;(&nbsp;&nbsp;{{rating.algs.resourceType}}&nbsp;&nbsp;)&nbsp;&nbsp;</td>
+<td>{{rating.ratings}}</td>
+<td>{{rating.review}}</td>
+</tr>
+</table>
+{% endblock %}
